@@ -1,11 +1,19 @@
 """
-Transcripts generated using claude.
+Transcripts are generated using claude.
+
+Prompt: Generate 10 call transcrispts. Each transcript should include "id", "expected_outcome", "expected_name", and "transcript" field. 
+"id" - use the main theme of the call as the id. e.g: electricity_outage.
+"expected_outcome" - one of callback, resolved, complaint or follow-up.
+"expected names" - leave some names as null. 
+
+Do not mention customer phone numbers in any of the transcripts. 
+Return the output as a JSON list. 
 
 """
 
 TRANSCRIPTS = [
     {
-        "id": "internet_callback",
+        "id": "broadband_dropout",
         "expected_outcome": "callback",
         "expected_name": "Sam Whitfield",
         "transcript": """Agent: Thanks for calling, you're through to support. Can I take your name?
@@ -18,7 +26,7 @@ Agent: Of course, I'll arrange for an engineer to call you back after 2pm.
 Customer: Thanks, that works.""",
     },
     {
-        "id": "order_resolved",
+        "id": "wrong_size_order",
         "expected_outcome": "resolved",
         "expected_name": None,
         "transcript": """Agent: Hello, how can I help today?
@@ -30,20 +38,18 @@ Customer: Perfect, that's sorted then. Thanks very much.
 Agent: You're welcome, have a good day.""",
     },
     {
-        "id": "billing_complaint",
+        "id": "careless_delivery",
         "expected_outcome": "complaint",
         "expected_name": "Priya Anand",
-        "transcript": """Agent: Hi there, can I start with your name please?
-Customer: Priya Anand.
-Agent: Thank you Priya, what can I do for you?
-Customer: I've just looked at my bill and you've charged me twice for the same thing. This is the third month in a row something's gone wrong.
-Agent: I'm very sorry, let me take a look.
-Customer: It's honestly not good enough. Every single month I have to ring up and chase you. I'm seriously thinking about leaving.
-Agent: I completely understand your frustration. I can see the duplicate charge and I'll refund it now.
-Customer: Fine. But you need to sort out whatever's causing this. I shouldn't have to keep calling.""",
+        "transcript": """Agent: Hello, how can I help?
+Customer: I don't need anything fixed, I just want to register a complaint. Your delivery driver left my parcel in the pouring rain on the doorstep and it was soaked through.
+Agent: I'm very sorry to hear that.
+Customer: The item's fine, luckily, so I don't want a replacement. I just think it's unacceptable and someone should know.
+Agent: Understood, I'll log that feedback about the driver.
+Customer: Good. That's all I wanted to say.""",
     },
     {
-        "id": "boiler_followup",
+        "id": "boiler_part_wait",
         "expected_outcome": "follow-up",
         "expected_name": None,
         "transcript": """Agent: Good morning, how can I help?
@@ -55,7 +61,7 @@ Customer: Alright, I'll wait to hear from you then.
 Agent: That's right, we'll contact you once the part's in.""",
     },
     {
-        "id": "password_resolved",
+        "id": "password_reset",
         "expected_outcome": "resolved",
         "expected_name": "Jordan Blake",
         "transcript": """Agent: Support, how can I help?
@@ -68,7 +74,7 @@ Agent: Perfect, anything else?
 Customer: No that's it, cheers.""",
     },
     {
-        "id": "delivery_callback",
+        "id": "missing_parcel",
         "expected_outcome": "callback",
         "expected_name": None,
         "transcript": """Agent: Hello, you've reached deliveries. How can I help?
@@ -79,8 +85,8 @@ Agent: Absolutely, I'll give you a call after 5pm with an update.
 Customer: Great, speak then.""",
     },
     {
-        "id": "subscription_complaint",
-        "expected_outcome": "complaint",
+        "id": "subscription_not_cancelled",
+        "expected_outcome": "resolved",
         "expected_name": "Tom Reilly",
         "transcript": """Agent: Hi, who am I speaking with?
 Customer: Tom Reilly.
@@ -92,7 +98,7 @@ Agent: I do apologise, I can see the cancellation didn't process correctly. I'll
 Customer: I should hope so. Honestly, terrible service.""",
     },
     {
-        "id": "insurance_followup",
+        "id": "storm_damage_claim",
         "expected_outcome": "follow-up",
         "expected_name": None,
         "transcript": """Agent: Claims department, how can I help?
@@ -105,10 +111,9 @@ Agent: Nothing for the moment. Once the report's back we'll process it and updat
 Customer: Right, I'll sit tight then.""",
     },
     {
-        "id": "phone_ambiguous_complaint_callback",
+        "id": "contract_price_hike",
         "expected_outcome": "callback",
         "expected_name": "Dani Okafor",
-        "note": "Tricky: clearly angry (complaint flavour) AND explicitly asks for a callback. Tests how you handle 'both'. Decide your rule.",
         "transcript": """Agent: Hello, how can I help? Can I take your name?
 Customer: Dani Okafor. My phone contract renewed at double the price without anyone telling me. I'm furious.
 Agent: I'm sorry Dani, let me look at the account.
@@ -117,10 +122,9 @@ Agent: Understood, I'll have someone call you back this afternoon to sort the pr
 Customer: They'd better. This is appalling.""",
     },
     {
-        "id": "account_ambiguous_resolved_complaint",
+        "id": "address_change_hold",
         "expected_outcome": "resolved",
         "expected_name": None,
-        "note": "Tricky: the problem IS fixed on the call (resolved), but the customer stays annoyed about how long it took. Tests that outcome and satisfaction are separate things.",
         "transcript": """Agent: Support, how can I help?
 Customer: I've been on hold for forty-five minutes. Forty-five! Just to change my address.
 Agent: I'm really sorry about the wait. I can update that for you right now though.
